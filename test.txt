@@ -1,1 +1,27 @@
-text
+브랜치 하는 법
+
+git clone [해당 경로]
+
+git checkout -b [브랜치 이름]
+
+(이러면 경로 옆의 사용자가 main에서 브랜치 이름으로 바뀌었을 것이다)
+
+(만약 안바뀐 경우)
+git branch 로 브랜치 이름 확인
+
+git branch [브랜치 이름]
+git checkout [브랜치 이름]
+
+
+그 뒤,
+
+git add .
+git commit -m "커밋 메시지"
+git push -u origin [브랜치 이름]
+
+이후 compare & pull request 버튼을 눌러 풀리퀘스트를 신청하면 된다.
+
+그 뒤, conflict가 나지 않았다면(오류 없음) merge를 눌러 합친다.
+
+
+참고 : https://velog.io/@ksh4820/github-%ED%98%91%EC%97%85%ED%95%98%EA%B8%B0-31k6c1nhi1
