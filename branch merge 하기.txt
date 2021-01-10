@@ -1,0 +1,10 @@
+git pull master
+
+또는
+
+git pull origin master
+
+를 입력
+
+이후
+git branch -d [브랜치 이름] 을 입력해서 브랜치삭제
