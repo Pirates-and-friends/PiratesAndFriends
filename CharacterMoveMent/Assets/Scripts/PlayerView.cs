@@ -51,14 +51,15 @@ public class PlayerView : MonoBehaviour
 
     void Jump()
     {
-        if(playerInput.jump) // 점프키를 누른 순간
-            playerModel.isJump = true;
-
-        if(playerInput.jumpoff) // 점프키를 뗀 순간
-            playerModel.isJump = false;
 
         //isJump의 상태 변화에 따라 점프 상태변화를 수행한다.
+        if(playerInput.jump && playerModel.jumpCnt<2)
+        {
+            playerModel.isJump = true;
+            playerModel.jumpCnt++; // 점프 카운트 횟수를 늘린다.
 
+            playerRigidbody.velocity += up * playerModel.jumpPower;
+        }
 
     }
 
@@ -72,5 +73,23 @@ public class PlayerView : MonoBehaviour
         /*
          * isLookRight 에 따라 보는 방향 전환;
          */
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.contacts[0].normal.y > 0.7)
+        {
+            playerModel.isJump = false;
+            playerModel.jumpCnt = 0;
+            playerModel.isGrounded = true;
+        }
+    }
+
+    void OncollisionExit()
+    {
+        if (playerModel.isJump)
+        {
+
+        }
     }
 }
