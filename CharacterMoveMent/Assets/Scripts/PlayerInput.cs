@@ -13,8 +13,10 @@ public class PlayerInput : MonoBehaviour
     
     [Header("조작 관련 입력 변수")]
     public float move;          //이동
+
     public bool jump,jumpoff;   //점프
     public bool dash, dashoff;  //대쉬
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move = Input.GetAxis(GetHorizontal);
+        move = Input.GetAxis(GetHorizontal); // 좌, 우 화살표, a d
 
         jump = Input.GetKeyDown(KeyCode.Space); // GetButton Down : bool( 참 / 거짓 ) 값 반환
         jumpoff = Input.GetKeyUp(KeyCode.Space);
