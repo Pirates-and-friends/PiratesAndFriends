@@ -7,12 +7,13 @@ public class PlayerView : MonoBehaviour
     PlayerInput playerInput;
     PlayerModel playerModel;
 
-    Vector3 right = Vector3.right;
-    Vector3 up = Vector3.up;
+    Vector3 right = Vector3.right; // Vector3(1,0,0);
+    Vector3 up = Vector3.up; // Vector3(0,1,0);
 
     Rigidbody playerRigidbody;
 
     Vector3 beforePosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +26,9 @@ public class PlayerView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-
         ViewDirection();
         Move();
+        Jump();
     }
 
     void LateUpdate()
@@ -47,6 +47,8 @@ public class PlayerView : MonoBehaviour
         Vector3 movedirection = right * playerInput.move * playerModel.speed * Time.deltaTime;
 
         playerRigidbody.MovePosition(playerRigidbody.position + movedirection);
+
+        //Debug.Log(playerRigidbody.velocity);
     }
 
     void Jump()
@@ -85,11 +87,13 @@ public class PlayerView : MonoBehaviour
         }
     }
 
+    void OnCollisionStay(Collision other)
+    {
+
+    }
+
     void OncollisionExit()
     {
-        if (playerModel.isJump)
-        {
-
-        }
+        
     }
 }

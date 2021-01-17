@@ -11,7 +11,8 @@ public class LeverBlockMove : MonoBehaviour
 
     float speed = 1f;
     float maxMove = 3f;
-    bool isBlockMove = false;
+    float direction = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +23,8 @@ public class LeverBlockMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(leverMove.isMove);
         if(leverMove.isMove)
-        {
-            isBlockMove = true;
-        }
-
-        if(isBlockMove)
         {
             Move();
         }
@@ -35,8 +32,10 @@ public class LeverBlockMove : MonoBehaviour
 
     void Move()
     {
-        transform.position += Vector3.up * speed;
-        if (transform.position.y > startPosition.y + maxMove)
-            isBlockMove = false;
+        transform.position += Vector3.right * speed*Time.deltaTime * direction;
+        if (transform.position.x > startPosition.x + maxMove)
+            direction = -1;
+        if (transform.position.x < startPosition.x)
+            direction = 1;
     }
 }
